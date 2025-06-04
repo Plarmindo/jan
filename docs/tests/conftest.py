@@ -15,15 +15,15 @@ def pytest_configure(config):
 
 def pytest_runtest_setup(item):
     getoption = item.config.getoption("--endpoint").split(",")
-    if getoption not in (["all"], [''], [""]):
+    if getoption not in (["all"], [""], [""]):
         endpoint_names = [mark.args[0] for mark in item.iter_markers(name="endpoint")]
         if not endpoint_names or not set(getoption).intersection(set(endpoint_names)):
-            pytest.skip("Test skipped because endpoint is {!r}".format(endpoint_names))
+            pytest.skip(f"Test skipped because endpoint is {endpoint_names!r}")
 
 
 def pytest_collection_modifyitems(items):
     # load the JSON file
-    with open("tests/endpoints_mapping.json", "r") as json_file:
+    with open("tests/endpoints_mapping.json") as json_file:
         endpoints_file_mapping = json.load(json_file)
 
     # create a dictionary to map filenames to endpoints

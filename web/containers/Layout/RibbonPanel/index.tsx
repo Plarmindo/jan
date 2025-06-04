@@ -8,6 +8,7 @@ import {
   SettingsIcon,
   LayoutGridIcon,
   SquareCodeIcon,
+  CodeIcon,
 } from 'lucide-react'
 
 import { twMerge } from 'tailwind-merge'
@@ -65,11 +66,15 @@ export default function RibbonPanel() {
         />
       ),
       state: MainViewState.Thread,
-    },
-    {
+    },    {
       name: 'Hub',
       icon: <LayoutGridIcon size={18} className="flex-shrink-0" />,
       state: MainViewState.Hub,
+    },
+    {
+      name: 'Aider',
+      icon: <CodeIcon size={18} className="flex-shrink-0" />,
+      state: MainViewState.Aider,
     },
     {
       name: 'Local API Server',

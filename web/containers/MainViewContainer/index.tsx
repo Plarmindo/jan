@@ -11,6 +11,7 @@ import HubScreen from '@/screens/Hub'
 import LocalServerScreen from '@/screens/LocalServer'
 import SettingsScreen from '@/screens/Settings'
 import ThreadScreen from '@/screens/Thread'
+import AiderScreen from '@/screens/Aider'
 
 import {
   mainViewStateAtom,
@@ -35,8 +36,7 @@ const MainViewContainer = () => {
   }, [showSystemMonitorPanel])
 
   let children = null
-  switch (mainViewState) {
-    case MainViewState.Hub:
+  switch (mainViewState) {    case MainViewState.Hub:
       children = <HubScreen />
       break
 
@@ -46,6 +46,10 @@ const MainViewContainer = () => {
 
     case MainViewState.LocalServer:
       children = <LocalServerScreen />
+      break
+
+    case MainViewState.Aider:
+      children = <AiderScreen />
       break
 
     default:
